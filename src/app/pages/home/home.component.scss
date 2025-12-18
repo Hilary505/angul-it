@@ -1,0 +1,80 @@
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.hero-section {
+  h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+  }
+}
+
+.challenge-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+
+  h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0.5rem 0;
+      color: #34495e;
+    }
+  }
+}
+
+.action-buttons {
+  .btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+
+    &.btn-primary {
+      background: #3498db;
+      color: white;
+
+      &:hover {
+        background: #2980b9;
+      }
+    }
+
+    &.btn-secondary {
+      background: #95a5a6;
+      color: white;
+
+      &:hover {
+        background: #7f8c8d;
+      }
+    }
+  }
+}
+
+.existing-progress {
+  p {
+    color: #e67e22;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+}
