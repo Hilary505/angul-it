@@ -1,0 +1,80 @@
+<div class="captcha-container" *ngIf="currentStage">
+  <div class="progress-section">
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="getProgress()"></div>
+    </div>
+    <span class="progress-text">{{ getProgress() }}% Complete</span>
+  </div>
+
+  <div class="stage-content">
+    <h2>{{ currentStage.title }}</h2>
+    <p class="instruction">{{ currentStage.instruction }}</p>
+
+    <!-- Image Selection Challenge -->
+    <div *ngIf="currentStage.type === 'image-select'" class="image-grid">
+      <div 
+        *ngFor="let image of currentStage.data.images" 
+        class="image-item"
+        [class.selected]="isImageSelected(image.id)"
+        (click)="onImageSelect(image.id)">
+        <img [src]="image.src" [alt]="'Image ' + image.id">
+        <div class="selection-overlay" *ngIf="isImageSelected(image.id)">
+          <span>✓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Math Puzzle Challenge -->
+    <div *ngIf="currentStage.type === 'puzzle'" class="puzzle-section">
+      <div class="question">{{ currentStage.data.question }}</div>
+      <form [formGroup]="captchaForm" class="answer-form">
+        <input 
+          type="number" 
+          formControlName="mathAnswer"
+          placeholder="Enter your answer"
+          class="form-input">
+      </form>
+    </div>
+
+    <!-- Text Verification Challenge -->
+    <div *ngIf="currentStage.type === 'text-verify'" class="text-verify-section">
+      <div class="captcha-image">
+        <img [src]="currentStage.data.imageUrl" alt="CAPTCHA Text">
+      </div>
+      <form [formGroup]="captchaForm" class="answer-form">
+        <input 
+          type="text" 
+          formControlName="textAnswer"
+          placeholder="Enter the text shown above"
+          class="form-input">
+      </form>
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div class="action-buttons">
+      <button 
+        class="btn btn-secondary" 
+        (click)="goToPrevious()"
+        [disabled]="!canGoPrevious()">
+        Previous
+      </button>
+      
+      <button 
+        class="btn btn-primary" 
+        (click)="submitAnswer()"
+        [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Checking...' : 'Submit' }}
+      </button>
+      
+      <button 
+        class="btn btn-secondary" 
+        (click)="goToNext()"
+        [disabled]="!canGoNext() || !currentStage.completed">
+        Next
+      </button>
+    </div>
+  </div>
+</div>
