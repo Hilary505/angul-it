@@ -1,0 +1,34 @@
+<div class="home-container">
+  <div class="hero-section">
+    <h1>Angul-It CAPTCHA Challenge</h1>
+    <p>Test your skills with our interactive multi-stage verification system</p>
+    
+    <div class="challenge-info">
+      <h3>What to Expect:</h3>
+      <ul>
+        <li>Image recognition challenges</li>
+        <li>Mathematical puzzles</li>
+        <li>Text verification tasks</li>
+      </ul>
+    </div>
+
+    <div class="action-buttons">
+      <button 
+        class="btn btn-primary" 
+        (click)="startChallenge()"
+        *ngIf="!hasExistingProgress">
+        Start Challenge
+      </button>
+      
+      <div *ngIf="hasExistingProgress" class="existing-progress">
+        <p>You have an existing challenge in progress.</p>
+        <button class="btn btn-primary" (click)="continueChallenge()">
+          Continue Challenge
+        </button>
+        <button class="btn btn-secondary" (click)="resetProgress()">
+          Start New Challenge
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
