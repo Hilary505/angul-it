@@ -1,0 +1,50 @@
+<div class="results-container" *ngIf="results">
+  <div class="results-header">
+    <h1>Challenge Complete!</h1>
+    <div class="performance-badge" [ngClass]="getPerformanceClass()">
+      <span class="badge-icon">{{ results.passed ? '✓' : '✗' }}</span>
+      <span class="badge-text">{{ getPerformanceMessage() }}</span>
+    </div>
+  </div>
+
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-value">{{ results.completedStages }}/{{ results.totalStages }}</div>
+      <div class="result-label">Stages Completed</div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-value">{{ results.correctAnswers }}/{{ results.totalStages }}</div>
+      <div class="result-label">Correct Answers</div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-value">{{ results.accuracy }}%</div>
+      <div class="result-label">Accuracy</div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-value">{{ formatTime(results.totalTime) }}</div>
+      <div class="result-label">Total Time</div>
+    </div>
+  </div>
+
+  <div class="results-summary">
+    <h3>Challenge Summary</h3>
+    <div class="summary-stats">
+      <p><strong>Performance:</strong> 
+        <span [ngClass]="getPerformanceClass()">
+          {{ results.passed ? 'Passed' : 'Failed' }}
+        </span>
+      </p>
+      <p><strong>Completion Rate:</strong> {{ Math.round((results.completedStages / results.totalStages) * 100) }}%</p>
+      <p><strong>Average Time per Stage:</strong> {{ formatTime(Math.round(results.totalTime / results.totalStages)) }}</p>
+    </div>
+  </div>
+
+  <div class="action-section">
+    <button class="btn btn-primary" (click)="restartChallenge()">
+      Start New Challenge
+    </button>
+  </div>
+</div>
