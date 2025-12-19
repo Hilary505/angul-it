@@ -1,0 +1,33 @@
+{
+  "imageSelectionChallenges": [
+    {
+      "id": 1,
+      "instruction": "Select all images that contain cats",
+      "images": [
+        { "id": 1, "src": "assets/images/cats/cat1.jpg", "hasCat": true },
+        { "id": 2, "src": "assets/images/dogs/dog1.jpg", "hasCat": false },
+        { "id": 3, "src": "assets/images/cats/cat2.jpg", "hasCat": true },
+        { "id": 4, "src": "assets/images/dogs/dog2.jpg", "hasCat": false }
+      ]
+    }
+  ],
+  "mathPuzzles": [
+    {
+      "id": 1,
+      "question": "What is 15 + 27?",
+      "answer": 42
+    },
+    {
+      "id": 2,
+      "question": "What is 8 × 7?",
+      "answer": 56
+    }
+  ],
+  "textVerification": [
+    {
+      "id": 1,
+      "text": "VERIFY123",
+      "imageUrl": "assets/images/captcha-text.png"
+    }
+  ]
+}
